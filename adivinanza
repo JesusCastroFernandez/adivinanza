@@ -1,0 +1,36 @@
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    // establecer la semilla aleatoria
+    rand.Seed(time.Now().UnixNano())
+
+    // generar un número aleatorio entre 1 y 100
+    number := rand.Intn(100) + 1
+
+    // imprimir las instrucciones del juego
+    fmt.Println("Adivina un número entre 1 y 100.")
+
+    // comenzar el bucle del juego
+    for {
+        // solicitar la entrada del usuario
+        fmt.Print("Ingrese su número: ")
+        var guess int
+        fmt.Scan(&guess)
+
+        // comprobar si la suposición es correcta
+        if guess == number {
+            fmt.Println("¡Correcto! ¡Adivinaste el número!")
+            break
+        } else if guess < number {
+            fmt.Println("El número es mayor que", guess, ".")
+        } else {
+            fmt.Println("El número es menor que", guess, ".")
+        }
+    }
+}
